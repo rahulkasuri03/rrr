@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Subject Feedback with Emojis and Comments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        .emoji-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .emoji {
+            font-size: 30px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .selected-emoji {
+            color: #007BFF;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            resize: vertical;
+        }
+
+        #feedbackDisplay {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        #feedbackDisplay p {
+            margin-bottom: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .next-button {
+            width: 10%;
+            padding: 8px;
+            background-color: #007BFF;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            text-align:;
+            text-decoration: none; /* Remove the default underline for anchor */
+        }
+
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+      
+	<h2> DATA STRUCTURES </h2>
+        <div class="emoji-container">
+            <span class="emoji" onclick="selectEmoji('⭐⭐⭐⭐⭐')">😃</span>
+            <span class="emoji" onclick="selectEmoji('⭐⭐⭐⭐')">😊</span>
+            <span class="emoji" onclick="selectEmoji('⭐⭐⭐')">😐</span>
+            <span class="emoji" onclick="selectEmoji('⭐⭐')">😞</span>
+            <span class="emoji" onclick="selectEmoji('⭐')">😢</span>
+        </div>
+
+        <form id="feedbackForm">
+            <input type="hidden" id="selectedEmoji" name="selectedEmoji" required>
+
+            <label for="comment">Additional Comments:</label>
+            <textarea id="comment" name="comment" placeholder="Enter your comments (optional)"></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <div id="feedbackDisplay" style="display: none;"></div>
+    </div>
+
+    <script>
+        let selectedEmoji = ""; // To store the selected emoji
+
+        function selectEmoji(emoji) {
+            selectedEmoji = emoji;
+            updateEmojiSelection();
+        }
+
+        function updateEmojiSelection() {
+            const emojiElements = document.getElementsByClassName("emoji");
+            for (const element of emojiElements) {
+                if (element.textContent === selectedEmoji) {
+                    element.classList.add("selected-emoji");
+                } else {
+                    element.classList.remove("selected-emoji");
+                }
+            }
+
+            // Update the hidden input value with the selected emoji
+            document.getElementById("selectedEmoji").value = selectedEmoji;
+        }
+
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get the comment from the textarea
+            const comment = document.getElementById("comment").value;
+
+            // Display the feedback below the form
+            const feedbackDisplay = document.getElementById("feedbackDisplay");
+            feedbackDisplay.innerHTML = `
+                <p><strong>Feedback:</strong> ${selectedEmoji}</p>
+                ${comment ? `<p><strong>Comment:</strong> ${comment}</p>` : ""}
+            `;
+            feedbackDisplay.style.display = "block";
+        });
+    </script>
+<form>
+
+            <button type="submit" class="NEXT-button">
+                <a href="asmt 2hci.html ">NEXT</a>
+</form>
+</body>
+
+</html>
